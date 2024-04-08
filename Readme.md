@@ -333,7 +333,7 @@ AttributeError: myClass instance has no attribute '__superprivate'
 
 或者: http://www.zhihu.com/question/19754941
 
-## 8 字符串格式化:%和.format
+## 8 字符串格式化:%和.format 还有 f-string
 
 .format在许多方面看起来更便利.对于`%`最烦人的是它无法同时传递一个变量和元组.你可能会想下面的代码不会有什么问题:
 
@@ -354,7 +354,30 @@ AttributeError: myClass instance has no attribute '__superprivate'
 * 不知道它(在读这个之前)
 * 为了和Python2.5兼容(譬如logging库建议使用`%`([issue #4](https://github.com/taizilongxu/interview_python/issues/4)))
 
+.format (python2.5之后推出）
+```
+# 使用名称占位符
+s2 = "xxxx {age} xxxx {name}".format(age=18, name="hangman")
+print(s2)  # xxxx 18 xxxx hangman
+
+# 使用序号占位符，为空默认从左到右01234.。。
+s3 = "xxxx {1} xxx{0}".format(value1,value2)
+print(s3)  # xxxx [9, 0] xxx(7, 8)
+```
+
 http://stackoverflow.com/questions/5082452/python-string-formatting-vs-format
+
+python3.6推出
+f-string是一个文字字符串，前缀为’f’，其中包含大括号内的表达式。表达式会将大括号中的内容替换为其值
+
+```
+import datetime
+name = "zings"
+age = 17
+date = datetime.date(2019,7,18)
+print(f'my name is {name}, this year is {date:%Y},Next year, I\'m {age+1}')  # my name is zings, this year is 2019,Next year, I'm 18
+
+```
 
 ## 9 迭代器和生成器
 
